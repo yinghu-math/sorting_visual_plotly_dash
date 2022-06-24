@@ -14,7 +14,6 @@ def bubble_sort_steps(array_original):
 
 
 def merge_sort_steps(array_original, steps = None):
-## there are duplicate steps
     array = array_original[:]
     if steps is None:
         steps = [array[:], ]
@@ -40,6 +39,8 @@ def merge_sort_steps(array_original, steps = None):
             else:
                 array[i + l + r] = L[l]
                 l += 1
+            # remove the duplicate frames
+            # program is not optimized 
             if array[:] not in steps:
                 steps.append(array[:])
         return array[i : j]
