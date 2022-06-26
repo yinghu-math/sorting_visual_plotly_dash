@@ -41,7 +41,7 @@ body {
 }
 
 .menu {
-    height: 120px;
+    height: 150px;
     width: 800px;
     padding-right: 50px;
     padding-left: 50px;
@@ -56,4 +56,9 @@ body {
     justify-content: center;
     flex-direction: column;
     font-size: 18px;
+}
+
+.remark {
+    font-size: 15px;
+    font-style: italic;
 }

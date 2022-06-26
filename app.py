@@ -29,18 +29,17 @@ app = dash.Dash(__name__)
 app.title = "Sorting Algorithm Visualization."
 
 app.layout = html.Div(children = [
-    html.Div(
-        children = [
-                    html.H1(children="Sorting Algorithm Visualization",
-                    className="header-title")
-                    ],
-        className = "header",
-    ), ## header
+    # html.Div(
+    #     children = [
+    #                 html.H1(children="Sorting Algorithm Visualization",
+    #                 className="header-title")
+    #                 ],
+    #     className = "header",
+    # ), ## header
     html.Div(
         children = [
             html.Div(
-                children= [html.P("Stop the current animation first. \
-                Then select a different sorting algorithm: "),],
+                children= [html.P("Select a sorting algorithm and play. "),],
                 className="menu-title"),
             dcc.Dropdown(
                 id="sorting_method",
@@ -51,6 +50,11 @@ app.layout = html.Div(children = [
                 placeholder = "Select a sorting algorithm",
                 value = "Merge Sort",
                 className="dropdown",
+            ),
+            html.Div(
+                children=[html.P(" * If an animation is running, stop the animation \
+                first before play a different algorithm.")],
+                className="remark",
             ),
         ],
         className = "menu"
