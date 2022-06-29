@@ -38,9 +38,9 @@ app.layout = html.Div(children = [
     # ), ## header
     html.Div(
         children = [
-            html.Div(
-                children= [html.P("Select a sorting algorithm and play. "),],
-                className="menu-title"),
+    #        html.Div(
+    #            children= [html.P("Select a sorting algorithm and play. "),],
+    #            className="menu-title"),
             dcc.Dropdown(
                 id="sorting_method",
                 options=[

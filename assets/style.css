@@ -41,11 +41,10 @@ body {
 }
 
 .menu {
-    height: 150px;
+    height: 70px;
     width: 800px;
-    padding-right: 50px;
-    padding-left: 50px;
-    margin: 20px auto 20px auto;
+    padding: 20px 50px 20px;
+    margin: 20px auto;
     background-color: #FFFFFF;
     box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.18);
 }
