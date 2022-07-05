@@ -3,17 +3,17 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-## dash version 1.19.0 (Dash 2.0 has different import statements)
 
-#from random import seed
+from random import seed
 from random import randint
 import sorting_steps
 
-#seed(1)
+seed(1)
 
-n = 50
+n = 60
 array = [randint(0, 50*n) for _ in range(n)]
 base_list = [i+1 for i in range(n)]
+print(array)
 
 method_lists = {'Merge Sort': sorting_steps.merge_sort_steps,
                 'Bubble Sort': sorting_steps.bubble_sort_steps}
@@ -29,18 +29,8 @@ app = dash.Dash(__name__)
 app.title = "Sorting Algorithm Visualization."
 
 app.layout = html.Div(children = [
-    # html.Div(
-    #     children = [
-    #                 html.H1(children="Sorting Algorithm Visualization",
-    #                 className="header-title")
-    #                 ],
-    #     className = "header",
-    # ), ## header
     html.Div(
         children = [
-    #        html.Div(
-    #            children= [html.P("Select a sorting algorithm and play. "),],
-    #            className="menu-title"),
             dcc.Dropdown(
                 id="sorting_method",
                 options=[
@@ -100,7 +90,7 @@ def update_graph_title(sort_method):
             ],
             height=500),
         frames=[go.Frame(data=go.Bar(x=base_list, y=step)) for step in steps],
-        layout_yaxis_range=[0, 2600],
+        layout_yaxis_range=[0, 3100],
     )
     return fig
 
