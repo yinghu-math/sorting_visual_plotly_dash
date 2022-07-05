@@ -73,4 +73,30 @@ def quick_sort(array_original):
     array = array_original[:]
     return quick_sort_helper(array, 0, len(array))
 
-print(quick_sort([4,2,1,5,0]))
+def quick_sort_steps(array_original, steps=None):
+    # average O(nlog(n)), worst O(n^2), in place
+    def partition(array, i, j, steps):
+        # The program returns the correct idx for the pivot; This is where we
+        #   will partition the array.
+        pivot = array[j-1]
+        partition_idx = i - 1
+        for idx in range(i, j-1):
+            if array[idx] <= pivot:
+                partition_idx += 1
+                array[idx], array[partition_idx] = array[partition_idx], array[idx]
+        array[partition_idx+1], array[j-1] = array[j-1], array[partition_idx+1]
+        steps.append(array[:])
+        return partition_idx + 1
+
+    def quick_sort_helper(array, low_idx, high_idx, steps):
+        if low_idx < high_idx:
+            partition_idx = partition(array, low_idx, high_idx, steps)
+            quick_sort_helper(array, low_idx, partition_idx, steps)
+            quick_sort_helper(array, partition_idx+1, high_idx, steps)
+        return array
+
+    array = array_original[:]
+    if steps is None: 
+        steps = [array[:]]
+    quick_sort_helper(array, 0, len(array), steps)
+    return steps
