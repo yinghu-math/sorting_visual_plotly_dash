@@ -10,13 +10,14 @@ import sorting_steps
 
 seed(1)
 
-n = 60
+n = 200
 array = [randint(0, 50*n) for _ in range(n)]
 base_list = [i+1 for i in range(n)]
 print(array)
 
 method_lists = {'Merge Sort': sorting_steps.merge_sort_steps,
-                'Bubble Sort': sorting_steps.bubble_sort_steps}
+                'Bubble Sort': sorting_steps.bubble_sort_steps,
+                'Quick Sort': sorting_steps.quick_sort_steps,}
 
 external_stylesheets = [
     {
@@ -36,6 +37,7 @@ app.layout = html.Div(children = [
                 options=[
                     {"label": "Merge Sort", "value": "Merge Sort"},
                     {"label": "Bubble Sort", "value": "Bubble Sort"},
+                    {"label": "Quick Sort", "value": "Quick Sort"},
                 ],
                 placeholder = "Select a sorting algorithm",
                 value = "Merge Sort",
@@ -71,8 +73,8 @@ def update_graph_title(sort_method):
                     buttons=[dict(label="Play",
                                  method="animate",
                                  args=[None,
-                                       {"frame": {"duration": 1},
-                                        "transition": {"duration": 0.5},
+                                       {"frame": {"duration": 5},
+                                        "transition": {"duration": 5},
                                         "mode": "immediate",
                                        },
                                       ],
@@ -90,7 +92,7 @@ def update_graph_title(sort_method):
             ],
             height=500),
         frames=[go.Frame(data=go.Bar(x=base_list, y=step)) for step in steps],
-        layout_yaxis_range=[0, 3100],
+        layout_yaxis_range=[0, 10200],
     )
     return fig
 
