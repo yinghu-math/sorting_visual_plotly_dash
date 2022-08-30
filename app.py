@@ -70,7 +70,7 @@ app.layout = html.Div(children = [
     Output(component_id="sorting_illustration", component_property="figure"),
     Input(component_id="sorting_method", component_property="value")
 )
-def update_graph_title(sort_method):
+def generate_animated_figure(sort_method):
     steps = method_lists[sort_method](array) # run sorting_steps.sort_method(array)
     fig = go.Figure(
         data=[go.Bar(x=base_list, y = array[:], width=0.7),],
