@@ -3,17 +3,16 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
-
 from random import seed
 from random import randint
+
 import sorting_steps
 
 seed(1)
 
 n = 60
-array = [randint(0, 50*n) for _ in range(n)]
-base_list = [i+1 for i in range(n)]
-print(array)
+array = [randint(0, 50*n) for _ in range(n)] # A random array of n integers to be sorted
+base_list = [i+1 for i in range(n)] # Bar diagram base coordiante
 
 method_lists = {'Merge Sort': sorting_steps.merge_sort_steps,
                 'Bubble Sort': sorting_steps.bubble_sort_steps}
@@ -28,6 +27,9 @@ external_stylesheets = [
 app = dash.Dash(__name__)
 app.title = "Sorting Algorithm Visualization."
 
+#===============================================================================
+# Layout of the website.
+#===============================================================================
 app.layout = html.Div(children = [
     html.Div(
         children = [
@@ -48,21 +50,28 @@ app.layout = html.Div(children = [
             ),
         ],
         className = "menu"
-    ), ## select menu
+    ), # Select menu
     html.Div(
         children = [
             html.Div(dcc.Graph(id="sorting_illustration"), className="card")
         ],
         className="wrapper"
-    ), ## Graph dash_html_components
+    ), # Graph dash_html_components
 ])
+
+#===============================================================================
+# Code for the callback function, which generates the animation.
+#
+# See https://dash.plotly.com/basic-callbacks for basic Dash callbacks
+# Some examples of animation using plotly: https://plotly.com/python/animations/
+#===============================================================================
 
 @app.callback(
     Output(component_id="sorting_illustration", component_property="figure"),
     Input(component_id="sorting_method", component_property="value")
 )
 def update_graph_title(sort_method):
-    steps = method_lists[sort_method](array)
+    steps = method_lists[sort_method](array) # run sorting_steps.sort_method(array)
     fig = go.Figure(
         data=[go.Bar(x=base_list, y = array[:], width=0.7),],
         layout=go.Layout(
