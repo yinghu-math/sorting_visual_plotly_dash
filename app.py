@@ -25,6 +25,7 @@ external_stylesheets = [
 ]
 
 app = dash.Dash(__name__)
+server = app.server 
 app.title = "Sorting Algorithm Visualization."
 
 #===============================================================================
@@ -104,4 +105,4 @@ def generate_animated_figure(sort_method):
     return fig
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server(debug=False)
