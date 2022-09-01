@@ -1,3 +1,16 @@
+# In each of the following functions,
+#   - the function takes an unsorted list of integers as its input
+#   - the output is a list of lists representing the steps taken by
+#    the specified sorting method.
+#
+# For example, bubble_sort_steps([3,2,1]) will return
+#       [[3,2,1],
+#       [2,3,1],
+#       [2,1,3],
+#       [1,2,3]]
+#
+#====================================================================
+
 def bubble_sort_steps(array_original):
     array = array_original[:]
     n = len(array)
@@ -12,8 +25,7 @@ def bubble_sort_steps(array_original):
                 steps.append(array[:])
     return steps
 
-
-def merge_sort_steps(array_original, steps = None):
+def merge_sort_steps(array_original, steps=None):
     array = array_original[:]
     if steps is None:
         steps = [array[:], ]
@@ -40,7 +52,7 @@ def merge_sort_steps(array_original, steps = None):
                 array[i + l + r] = L[l]
                 l += 1
             # remove the duplicate frames
-            # program is not optimized 
+            # program is not optimized
             if array[:] not in steps:
                 steps.append(array[:])
         return array[i : j]
