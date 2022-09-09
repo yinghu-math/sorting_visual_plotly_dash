@@ -1,17 +1,15 @@
-import plotly.graph_objects as go
-
-from dash import Dash, html, dcc, Input, Output
-
 from random import seed
 from random import randint
+
+import plotly.graph_objects as go
+from dash import Dash, html, dcc, Input, Output
 
 import sorting_steps
 
 seed(1)
-
-n = 60
-array = [randint(0, 50*n) for _ in range(n)] # A random array of n integers to be sorted
-base_list = [i+1 for i in range(n)] # Bar diagram base coordiante
+ARRARY_LEN = 60 # A random array of ARRARY_LEN integers to be sorted
+array = [randint(0, 50 * ARRARY_LEN) for _ in range(ARRARY_LEN)]
+base_list = [i+1 for i in range(ARRARY_LEN)] # Bar diagram base coordiante
 
 method_lists = {'Merge Sort': sorting_steps.merge_sort_steps,
                 'Bubble Sort': sorting_steps.bubble_sort_steps}
