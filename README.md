@@ -12,10 +12,7 @@ There is also a sister project using Flask and Matplotlib ([Repo](https://github
 
 ## Web App
 
-The application is deployed on Heroku. 
-[App link](https://sorting-visualization-dash.herokuapp.com/)
-
-As shown in the picture below, one can choose a sorting algorithm from the dropdown menu. 
+One can choose a sorting algorithm from the dropdown menu. 
 
 ![Application interface | 500](img/app_img.png)
 
